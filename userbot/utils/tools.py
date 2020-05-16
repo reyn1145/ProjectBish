@@ -8,7 +8,7 @@ import math
 import os
 import time
 import re
-import hashliib
+import hashlib
 
 from telethon import events
 from telethon.tl.functions.messages import GetPeerDialogsRequest
