@@ -9,6 +9,7 @@ covid
 cryptg
 dnspython
 emoji
+ffmpy
 gitpython
 google-api-python-client
 google-auth-httplib2
