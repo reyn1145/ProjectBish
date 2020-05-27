@@ -739,7 +739,7 @@ async def boobs(e):
     os.remove("boobs.jpg")
     await e.delete()
     
-    
+
 @register(outgoing=True, pattern="^.butts(?: |$)(.*)")
 async def butts(e):
     await e.edit("`Finding some beautiful butts...`")
@@ -750,7 +750,7 @@ async def butts(e):
     os.rename('*.jpg', 'butts.jpg')
     await bot.send_file(e.chat_id, "butts.jpg")
     os.remove("butts.jpg")
-    await e.delete()        
+    await e.delete()
 
 
 @register(outgoing=True, pattern="^.(yes|no|maybe|decide)$")
@@ -1326,9 +1326,9 @@ CMD_HELP.update({
     "memes":
     "`.cowsay`\
 \nUsage: cow which says things.\
-\n\n>`.boobs`\
+\n\n`.boobs`\
 \nUsage: Get b00bs imej\
-\n\n>`.butts`\
+\n\n`.butts`\
 \nUsage: Get 🅱️utts imej\
 \n\n`.cp`\
 \nUsage: Copypasta the famous meme\
