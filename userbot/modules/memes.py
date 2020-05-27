@@ -7,15 +7,22 @@
 from asyncio import sleep
 from random import choice, getrandbits, randint
 from re import sub
+from PIL import Image
+from telethon.tl.functions.account import UpdateNotifySettingsRequest
+from telethon.tl.types import MessageMediaPhoto
+import re
+from urllib.request import urlopen
 import time
-
+import datetime
 from collections import deque
-
+import urllib
 import requests
-
+import io
+import os
+from bs4 import BeautifulSoup
 from cowpy import cow
 
-from userbot import CMD_HELP
+from userbot import bot, CMD_HELP
 from userbot.events import register
 from userbot.modules.admin import get_user_from_event
 
@@ -650,15 +657,6 @@ async def univsaye(cowmsg):
     await cowmsg.edit(f"`{cheese.milk(text).replace('`', '´')}`")
 
 
-@register(outgoing=True, pattern="^:/$", ignore_unsafe=True)
-async def kek(keks):
-    """ Check yourself ;)"""
-    uio = ["/", "\\"]
-    for i in range(1, 15):
-        time.sleep(0.3)
-        await keks.edit(":" + uio[i % 2])
-
-
 @register(outgoing=True, pattern=r"^.coinflip (.*)")
 async def coin(event):
     r = choice(["heads", "tails"])
@@ -727,15 +725,32 @@ async def slap(replied_user, event):
         victim=slapped, item=item, hits=hit, throws=throw, where=where)
 
     return caption
-
-
-@register(outgoing=True, pattern="^-_-$", ignore_unsafe=True)
-async def lol(lel):
-    """ Ok... """
-    okay = "-_-"
-    for i in range(10):
-        okay = okay[:-1] + "_-"
-        await lel.edit(okay)
+        
+        
+@register(outgoing=True, pattern="^.boobs(?: |$)(.*)")
+async def boobs(e):
+    await e.edit("`Finding some big boobs...`")
+    await sleep(3)
+    await e.edit("`Sending some big boobs...`")
+    nsfw = requests.get('http://api.oboobs.ru/noise/1').json()[0]["preview"]
+    urllib.request.urlretrieve("http://media.oboobs.ru/{}".format(nsfw), "*.jpg")
+    os.rename('*.jpg', 'boobs.jpg')
+    await bot.send_file(e.chat_id, "boobs.jpg")
+    os.remove("boobs.jpg")
+    await e.delete()
+    
+    
+@register(outgoing=True, pattern="^.butts(?: |$)(.*)")
+async def butts(e):
+    await e.edit("`Finding some beautiful butts...`")
+    await sleep(3)
+    await e.edit("`Sending some beautiful butts...`")
+    nsfw = requests.get('http://api.obutts.ru/noise/1').json()[0]["preview"]
+    urllib.request.urlretrieve("http://media.obutts.ru/{}".format(nsfw), "*.jpg")
+    os.rename('*.jpg', 'butts.jpg')
+    await bot.send_file(e.chat_id, "butts.jpg")
+    os.remove("butts.jpg")
+    await e.delete()        
 
 
 @register(outgoing=True, pattern="^.(yes|no|maybe|decide)$")
@@ -751,14 +766,6 @@ async def decide(event):
                                     str(r["answer"]).upper(),
                                     reply_to=message_id,
                                     file=r["image"])
-
-
-@register(outgoing=True, pattern="^;_;$", ignore_unsafe=True)
-async def fun(e):
-    t = ";_;"
-    for j in range(10):
-        t = t[:-1] + "_;"
-        await e.edit(t)
 
 
 @register(outgoing=True, pattern="^.fp$")
@@ -974,14 +981,6 @@ async def runner_lol(run):
 async def metoo(hahayes):
     """ Haha yes """
     await hahayes.edit(choice(METOOSTR))
-
-
-@register(outgoing=True, pattern="^Oof$")
-async def Oof(e):
-    t = "Oof"
-    for j in range(15):
-        t = t[:-1] + "of"
-        await e.edit(t)
 
 
 @register(outgoing=True, pattern="^.moon$")
@@ -1327,12 +1326,10 @@ CMD_HELP.update({
     "memes":
     "`.cowsay`\
 \nUsage: cow which says things.\
-\n\n`:/`\
-\nUsage: Check yourself ;)\
-\n\n`-_-`\
-\nUsage: Ok...\
-\n\n`;_;`\
-\nUsage: Like `-_-` but crying.\
+\n\n>`.boobs`\
+\nUsage: Get b00bs imej\
+\n\n>`.butts`\
+\nUsage: Get 🅱️utts imej\
 \n\n`.cp`\
 \nUsage: Copypasta the famous meme\
 \n\n`.vapor`\
@@ -1341,8 +1338,6 @@ CMD_HELP.update({
 \nUsage: Stretch it.\
 \n\n`.zal`\
 \nUsage: Invoke the feeling of chaos.\
-\n\n`Oof`\
-\nUsage: Ooooof\
 \n\n`.fp`\
 \nUsage: Facepalm :P\
 \n\n`.moon`\
