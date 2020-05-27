@@ -8,14 +8,15 @@ from asyncio import sleep
 from random import choice, getrandbits, randint
 from re import sub
 from PIL import Image
+from telethon import events
 from telethon.tl.functions.account import UpdateNotifySettingsRequest
 from telethon.tl.types import MessageMediaPhoto
 import re
+import urllib
 from urllib.request import urlopen
 import time
 import datetime
 from collections import deque
-import urllib
 import requests
 import io
 import os
