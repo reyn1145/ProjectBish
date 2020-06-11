@@ -151,6 +151,10 @@ G_DRIVE_AUTH_TOKEN_DATA = os.environ.get("G_DRIVE_AUTH_TOKEN_DATA", None)
 G_DRIVE_FOLDER_ID = os.environ.get("G_DRIVE_FOLDER_ID", None)
 TEMP_DOWNLOAD_DIRECTORY = os.environ.get("TMP_DOWNLOAD_DIRECTORY",
                                          "./downloads")
+                                         
+# Zipfile module
+ZIP_DOWNLOAD_DIRECTORY = os.environ.get("ZIP_DOWNLOAD_DIRECTORY",
+                                         "./zips")                                         
 
 # Terminal Alias
 TERM_ALIAS = os.environ.get("TERM_ALIAS", None)
@@ -160,6 +164,9 @@ GENIUS = os.environ.get("GENIUS_ACCESS_TOKEN", None)
 
 # Quote
 QUOTES_API_TOKEN = os.environ.get("QUOTES_API_TOKEN", None)
+
+# Deezloader
+DEEZER_ARL_TOKEN = os.environ.get("DEEZER_ARL_TOKEN", None)
 
 # Setting Up CloudMail.ru and MEGA.nz extractor binaries,
 # and giving them correct perms to work properly.
