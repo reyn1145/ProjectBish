@@ -12,7 +12,6 @@ async def _(event):
     if event.fwd_from:
         return
     link = event.pattern_match.group(1)
-    chat = "@XiaomiGeeksBot"
     firmware = f"firmware"
     await event.edit("```Processing```")
     async with bot.conversation("@XiaomiGeeksBot") as conv:
@@ -33,7 +32,6 @@ async def _(event):
     if event.fwd_from:
         return
     link = event.pattern_match.group(1)
-    chat = "@XiaomiGeeksBot"
     mieu = f"eu"
     await event.edit("```Processing```")
     async with bot.conversation("@XiaomiGeeksBot") as conv:
@@ -54,7 +52,6 @@ async def _(event):
     if event.fwd_from:
         return
     link = event.pattern_match.group(1)
-    chat = "@XiaomiGeeksBot"
     fboot = f"fastboot"
     await event.edit("```Processing```")
     async with bot.conversation("@XiaomiGeeksBot") as conv:
@@ -75,7 +72,6 @@ async def _(event):
     if event.fwd_from:
         return
     link = event.pattern_match.group(1)
-    chat = "@XiaomiGeeksBot"
     recovery = f"recovery"
     await event.edit("```Processing```")
     async with bot.conversation("@XiaomiGeeksBot") as conv:
@@ -95,7 +91,6 @@ async def _(event):
     if event.fwd_from:
         return
     link = event.pattern_match.group(1)
-    chat = "@XiaomiGeeksBot"
     pitch = f"pb"
     await event.edit("```Processing```")
     async with bot.conversation("@XiaomiGeeksBot") as conv:
@@ -115,7 +110,6 @@ async def _(event):
     if event.fwd_from:
         return
     link = event.pattern_match.group(1)
-    chat = "@XiaomiGeeksBot"
     ofox = f"of"
     await event.edit("```Processing```")
     async with bot.conversation("@XiaomiGeeksBot") as conv:

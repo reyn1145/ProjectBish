@@ -56,15 +56,9 @@ def admin_cmd(**args):
     black_list_chats = list(Config.UB_BLACK_LIST_CHAT)
     if len(black_list_chats) > 0:
         args["chats"] = black_list_chats
-
-    # check if the plugin should allow edited updates
-    allow_edited_updates = False
     if "allow_edited_updates" in args and args["allow_edited_updates"]:
         allow_edited_updates = args["allow_edited_updates"]
         del args["allow_edited_updates"]
-
-    # check if the plugin should listen for outgoing 'messages'
-    is_message_enabled = True
 
     return events.NewMessage(**args)    
 
