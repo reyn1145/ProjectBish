@@ -11,8 +11,7 @@ from platform import python_version, uname
 from shutil import which
 from os import remove
 from telethon import version
-
-from userbot import CMD_HELP, ALIVE_NAME, UPSTREAM_REPO_BRANCH
+from userbot import bot, CMD_HELP, ALIVE_NAME, UPSTREAM_REPO_BRANCH, ALIVE_LOGO
 from userbot.events import register
 
 # ================= CONSTANT =================
@@ -130,31 +129,16 @@ async def pipcheck(pip):
 
 @register(outgoing=True, pattern=r"^\.(?:alive|on)\s?(.)?")
 async def amireallyalive(alive):
-    """ For .on command, check if the bot is running.  """
-    await alive.edit (f"`ProjectBish` is running with `{UPSTREAM_REPO_BRANCH}`\n"
-                     f"============================================\n"
-                     f"`"
-                     f"⣿⣿⣷⡁⢆⠈⠕⢕⢂⢕⢂⢕⢂⢔⢂⢕⢄⠂⣂⠂⠆⢂⢕⢂⢕⢂⢕⢂⢕⢂\n"
-                     f"⣿⣿⣿⡷⠊⡢⡹⣦⡑⢂⢕⢂⢕⢂⢕⢂⠕⠔⠌⠝⠛⠶⠶⢶⣦⣄⢂⢕⢂⢕\n"
-                     f"⣿⣿⠏⣠⣾⣦⡐⢌⢿⣷⣦⣅⡑⠕⠡⠐⢿⠿⣛⠟⠛⠛⠛⠛⠡⢷⡈⢂⢕⢂\n"
-                     f"⠟⣡⣾⣿⣿⣿⣿⣦⣑⠝⢿⣿⣿⣿⣿⣿⡵⢁⣤⣶⣶⣿⢿⢿⢿⡟⢻⣤⢑⢂\n"
-                     f"⣾⣿⣿⡿⢟⣛⣻⣿⣿⣿⣦⣬⣙⣻⣿⣿⣷⣿⣿⢟⢝⢕⢕⢕⢕⢽⣿⣿⣷⣔\n"
-                     f"⣿⣿⠵⠚⠉⢀⣀⣀⣈⣿⣿⣿⣿⣿⣿⣿⣿⣿⣗⢕⢕⢕⢕⢕⢕⣽⣿⣿⣿⣿\n"
-                     f"⢷⣂⣠⣴⣾⡿⡿⡻⡻⣿⣿⣴⣿⣿⣿⣿⣿⣿⣷⣵⣵⣵⣷⣿⣿⣿⣿⣿⣿⡿\n"
-                     f"⢌⠻⣿⡿⡫⡪⡪⡪⡪⣺⣿⣿⣿⣿⣿⠿⠿⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠃\n"
-                     f"⠣⡁⠹⡪⡪⡪⡪⣪⣾⣿⣿⣿⣿⠋⠐⢉⢍⢄⢌⠻⣿⣿⣿⣿⣿⣿⣿⣿⠏⠈\n"
-                     f"⡣⡘⢄⠙⣾⣾⣾⣿⣿⣿⣿⣿⣿⡀⢐⢕⢕⢕⢕⢕⡘⣿⣿⣿⣿⣿⣿⠏⠠⠈\n"
-                     f"⠌⢊⢂⢣⠹⣿⣿⣿⣿⣿⣿⣿⣿⣧⢐⢕⢕⢕⢕⢕⢅⣿⣿⣿⣿⡿⢋⢜⠠⠈\n"
-                     f"⠄⠁⠕⢝⡢⠈⠻⣿⣿⣿⣿⣿⣿⣿⣷⣕⣑⣑⣑⣵⣿⣿⣿⡿⢋⢔⢕⣿⠠⠈\n"
-                     f"⠨⡂⡀⢑⢕⡅⠂⠄⠉⠛⠻⠿⢿⣿⣿⣿⣿⣿⣿⣿⣿⡿⢋⢔⢕⢕⣿⣿⠠⠈\n"
-                     f"⠄⠪⣂⠁⢕⠆⠄⠂⠄⠁⡀⠂⡀⠄⢈⠉⢍⢛⢛⢛⢋⢔⢕⢕⢕⣽⣿⣿⠠⠈\n"
-                     f"`"
-                     f"============================================\n"
-                     f"`•  Python Version    :` `{python_version()}`\n"
-                     f"`•  Telethon Version  :` `{version.__version__}`\n"
-                     f"============================================\n"
-                     f"`•  User              :` {DEFAULTUSER}")
-
+    """ For .alive command, check if the bot is running.  """
+    logo = ALIVE_LOGO
+    output = (f"`ProjectBish` is running on `{UPSTREAM_REPO_BRANCH}`\n"
+             f"====================================\n"
+             f"👤 User     : {DEFAULTUSER}\n"
+             f"🐍 Python   : v{python_version()}\n"
+             f"⚙️ Telethon : v{version.__version__}\n"
+             f"====================================\n")
+    await bot.send_file(alive.chat_id, logo, caption=output)
+    await alive.delete()
 
 @register(outgoing=True, pattern="^.aliveu")
 async def amireallyaliveuser(username):
