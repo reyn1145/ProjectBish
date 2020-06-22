@@ -73,10 +73,10 @@ async def set_afk(afk_e):
     afk_start = start_1.replace(microsecond=0)
     if string:
         AFKREASON = string
-        await afk_e.edit(f"**Into the Void!**\
-        \nReason: `{string}`")
+        await afk_e.edit(f"**GW LAGI OFF JGN GANGGU!!**\
+        \nKarna: `{string}`")
     else:
-        await afk_e.edit("**Into The Void!**")
+        await afk_e.edit("**GW LAGI OFF JGN GANGGU!!**")
     if BOTLOG:
         await afk_e.client.send_message(BOTLOG_CHATID, "#AFK\nYou went Away from Keyboard!")
     ISAFK = True
@@ -99,7 +99,7 @@ async def type_afk_is_not_true(notafk):
     afk_end = back_alive.replace(microsecond=0)
     if ISAFK:
         ISAFK = False
-        msg = await notafk.edit("**I'm back BISH!**")
+        msg = await notafk.edit("**ON DLU GAYN CAPE OFF MULU!!**")
         time.sleep(3)
         await msg.delete()
         if BOTLOG:
@@ -165,21 +165,21 @@ async def mention_afk(mention):
                 afk_since = f"`{int(seconds)}s` ago"
             if mention.sender_id not in USERS:
                 if AFKREASON:
-                    await mention.reply(f"**I'm not available right now.** (Since **{afk_since}**).\
+                    await mention.reply(f"**GW LAGI OFF TAE..** (Since **{afk_since}**).\
                         \nReason: `{AFKREASON}`")
                 else:
-                    await mention.reply(f"**I'm not available right now.** (Since **{afk_since}**).\
-                        \n**Please come back later**")
+                    await mention.reply(f"**GW LAGI OFF TAE..** (Since **{afk_since}**).\
+                        \n**NTAR LAGI JUGA GW ON**")
                 USERS.update({mention.sender_id: 1})
                 COUNT_MSG = COUNT_MSG + 1
             elif mention.sender_id in USERS:
                 if USERS[mention.sender_id] % randint(2, 4) == 0:
                     if AFKREASON:
-                        await mention.reply(f"**I'm still not available right now.** (Since **{afk_since}**).\
+                        await mention.reply(f"**GW LAGI OFF TAE..** (Since **{afk_since}**).\
                             \nReason: `{AFKREASON}`")
                     else:
-                        await mention.reply(f"**I'm not available right now.** (Since **{afk_since}**).\
-                        \n**Please come back later**")
+                        await mention.reply(f"**GW LAGI OFF TAE..** (Since **{afk_since}**).\
+                        \n**NTAR LAGI JUGA GW ON**")
                     USERS[mention.sender_id] = USERS[mention.sender_id] + 1
                     COUNT_MSG = COUNT_MSG + 1
                 else:
@@ -243,20 +243,20 @@ async def afk_on_pm(sender):
                 afk_since = f"`{int(seconds)}s` ago"
             if sender.sender_id not in USERS:
                 if AFKREASON:
-                    await sender.reply(f"**I'm not available right now.** (Since **{afk_since}**).\
+                    await sender.reply(f"**GW LAGI OFF HEHE** (Since **{afk_since}**).\
                         \nReason: `{AFKREASON}`")
                 else:
-                    await sender.reply(f"**I'm not available right now.** (Since **{afk_since}**).\
+                    await sender.reply(f"**GW LAGI OFF HEHE** (Since **{afk_since}**).\
                         \n**Please come back later**")
                 USERS.update({sender.sender_id: 1})
                 COUNT_MSG = COUNT_MSG + 1
             elif apprv and sender.sender_id in USERS:
                 if USERS[sender.sender_id] % randint(2, 4) == 0:
                     if AFKREASON:
-                        await sender.reply(f"**I'm still not available right now.** (Since **{afk_since}**).\
-                            \nReason: `{AFKREASON}`")
+                        await sender.reply(f"**GW LAGI OFF HEHE** (Since **{afk_since}**).\
+                            \nKarna: `{AFKREASON}`")
                     else:
-                        await sender.reply(f"**I'm not available right now.** (Since **{afk_since}**).\
+                        await sender.reply(f"**GW LAGI OFF HEHE** (Since **{afk_since}**).\
                         \n**Please come back later**")
                     USERS[sender.sender_id] = USERS[sender.sender_id] + 1
                     COUNT_MSG = COUNT_MSG + 1
